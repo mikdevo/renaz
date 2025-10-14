@@ -1208,6 +1208,143 @@ body::after {
     width: 100%;
 }
 
+.music-control-btn {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+    border: 2px solid var(--color-accent-light);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 8px 32px rgba(207, 179, 96, 0.5), inset 0 2px 8px rgba(255, 255, 255, 0.2);
+    transition: var(--transition-smooth);
+    overflow: hidden;
+    padding: 0;
+}
+
+.music-control-btn::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-light), var(--color-accent));
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: rotateBorder 3s linear infinite;
+}
+
+@keyframes rotateBorder {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.music-control-btn:hover::before {
+    opacity: 1;
+}
+
+.music-control-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 48px rgba(207, 179, 96, 0.7), inset 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+.music-control-btn:active {
+    transform: scale(0.95);
+}
+
+.music-icon {
+    position: relative;
+    color: var(--color-black);
+    margin-bottom: 4px;
+    z-index: 2;
+}
+
+.music-icon svg {
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.music-waves {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3px;
+    height: 16px;
+    z-index: 2;
+}
+
+.wave {
+    width: 3px;
+    height: 8px;
+    background: var(--color-black);
+    border-radius: 2px;
+    animation: waveAnimation 0.8s ease-in-out infinite;
+}
+
+.wave:nth-child(1) { animation-delay: 0s; }
+.wave:nth-child(2) { animation-delay: 0.2s; }
+.wave:nth-child(3) { animation-delay: 0.4s; }
+.wave:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes waveAnimation {
+    0%, 100% { height: 4px; }
+    50% { height: 16px; }
+}
+
+.music-control-btn.paused .music-waves .wave {
+    animation: none;
+    height: 4px;
+}
+
+.music-control-btn.paused .music-icon-playing {
+    display: none;
+}
+
+.music-control-btn.paused .music-icon-paused {
+    display: block !important;
+}
+
+.music-control-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: calc(100% + 1rem);
+    background: rgba(22, 27, 34, 0.95);
+    color: var(--color-accent);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-family: var(--font-heading);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    border: 1px solid var(--color-accent);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.music-control-btn:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+[dir="rtl"] .music-control-btn {
+    left: auto;
+    right: 2rem;
+}
+
+[dir="rtl"] .music-control-btn::after {
+    right: auto;
+    left: calc(100% + 1rem);
+}
+
 .loading-overlay {
     position: fixed;
     top: 0;
@@ -1315,6 +1452,31 @@ body::after {
     :root {
         --reader-font-size: 16px;
         --reader-line-height: 1.7;
+    }
+    
+    .music-control-btn {
+        bottom: 1.5rem;
+        left: 1.5rem;
+        width: 56px;
+        height: 56px;
+    }
+    
+    [dir="rtl"] .music-control-btn {
+        left: auto;
+        right: 1.5rem;
+    }
+    
+    .music-control-btn::after {
+        display: none;
+    }
+    
+    .music-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .music-waves {
+        height: 14px;
     }
     
     .continue-reading-section {
@@ -1500,6 +1662,23 @@ body::after {
     
     body {
         font-size: 14px;
+    }
+    
+    .music-control-btn {
+        bottom: 1rem;
+        left: 1rem;
+        width: 52px;
+        height: 52px;
+    }
+    
+    [dir="rtl"] .music-control-btn {
+        left: auto;
+        right: 1rem;
+    }
+    
+    .music-icon svg {
+        width: 18px;
+        height: 18px;
     }
     
     .continue-reading-card {

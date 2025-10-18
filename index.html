@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وحدها ريناز</title>
+    <title>مجموعة روايات ريناز | Renaz Novel Collection</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,8 +13,8 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <span class="brand-icon">📖</span>
-                <span class="brand-text" id="novelTitle">وحدها ريناز</span>
+                <span class="brand-icon">📚</span>
+                <span class="brand-text" id="collectionTitle">روايات ريناز</span>
             </div>
             <div class="nav-actions">
                 <button class="nav-btn" id="homeBtn" title="الرئيسية">
@@ -47,43 +47,20 @@
 
     <div class="main-container">
         <section class="page active" id="homePage">
-            <div class="hero-section">
-                <div class="hero-content">
-                    <div class="hero-decoration"></div>
-                    <h1 class="hero-title" id="heroTitle">وحدها ريناز</h1>
-                    <p class="hero-subtitle" id="heroSubtitle">رواية رومانسية خيالية</p>
-                    <div class="hero-meta">
-                        <span class="meta-item">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                            </svg>
-                            <span id="chapterCount">0 أجزاء</span>
-                        </span>
-                        <span class="meta-item">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                            <span id="authorName">المؤلف</span>
-                        </span>
-                    </div>
-                    <button class="primary-btn start-reading-btn" id="startReadingBtn">
+            <div class="library-hero">
+                <div class="library-hero-content">
+                    <h1 class="library-title">مجموعة روايات ريناز</h1>
+                    <p class="library-subtitle">مجموعة من الروايات الرومانسية والخيالية التي تلامس القلب</p>
+                    <div class="library-author">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="15 18 9 12 15 6"></polyline>
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
                         </svg>
-                        <span>ابدأ القراءة</span>
-                    </button>
-                </div>
-                <div class="hero-image">
-                    <div class="book-illustration">
-                        <div class="book-spine"></div>
-                        <div class="book-cover"></div>
-                        <div class="book-pages"></div>
+                        <span id="collectionAuthor">约 - Wick</span>
                     </div>
                 </div>
             </div>
-            
+
             <div class="continue-reading-section" id="continueReadingSection" style="display: none;">
                 <div class="continue-reading-card">
                     <div class="continue-icon">
@@ -96,6 +73,9 @@
                     </div>
                     <div class="continue-content">
                         <h3 class="continue-title">تابع القراءة من حيث توقفت</h3>
+                        <p class="continue-novel-info">
+                            <span class="continue-novel-title" id="continueNovelTitle">اسم الرواية</span>
+                        </p>
                         <p class="continue-chapter-info">
                             <span class="continue-chapter-number" id="continueChapterNumber">الجزء 1</span>
                             <span class="continue-separator">•</span>
@@ -117,9 +97,57 @@
                 </div>
             </div>
 
+            <div class="novels-section">
+                <h2 class="section-title">الروايات</h2>
+                <div class="novels-grid" id="novelsGrid">
+                </div>
+            </div>
+        </section>
+
+        <section class="page" id="novelDetailsPage">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-decoration"></div>
+                    <h1 class="hero-title" id="novelDetailTitle">عنوان الرواية</h1>
+                    <p class="hero-subtitle" id="novelDetailSubtitle">نوع الرواية</p>
+                    <div class="hero-meta">
+                        <span class="meta-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            </svg>
+                            <span id="novelDetailChapterCount">0 أجزاء</span>
+                        </span>
+                        <span class="meta-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <span id="novelDetailAuthor">المؤلف</span>
+                        </span>
+                        <span class="meta-item">
+                            <span class="status-badge" id="novelDetailStatus">مكتملة</span>
+                        </span>
+                    </div>
+                    <button class="primary-btn start-reading-btn" id="startReadingBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        <span>ابدأ القراءة</span>
+                    </button>
+                </div>
+                <div class="hero-image">
+                    <div class="book-illustration">
+                        <div class="book-spine"></div>
+                        <div class="book-cover"></div>
+                        <div class="book-pages"></div>
+                    </div>
+                </div>
+            </div>
+
             <div class="description-section">
                 <h2 class="section-title">عن الرواية</h2>
-                <p class="description-text" id="novelDescription">
+                <p class="description-text" id="novelDetailDescription">
                     وصف الرواية سيظهر هنا
                 </p>
             </div>
@@ -225,7 +253,7 @@
         <div class="loading-spinner"></div>
     </div>
 
-    <audio id="backgroundMusic" loop preload="auto" autoplay muted>
+    <audio id="backgroundMusic" preload="auto" autoplay muted>
         <source src="music.mp3" type="audio/mpeg">
     </audio>
 

@@ -1,0 +1,79 @@
+.novel-card,
+.chapter-card,
+.primary-btn,
+.secondary-btn,
+.nav-btn,
+.music-control-btn,
+.font-btn,
+.font-family-btn,
+.page {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .novel-card,
+    .chapter-card {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .novel-card:hover,
+    .chapter-card:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+    
+    .novel-card::before,
+    .chapter-card::after {
+        display: none;
+    }
+    
+    * {
+        transition-duration: 0.2s !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .animated-gradient,
+    .shimmer-text {
+        animation: none !important;
+    }
+    
+    .novel-card:hover,
+    .chapter-card:hover {
+        transform: none !important;
+    }
+}
+
+img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+.novel-card,
+.chapter-card,
+.continue-reading-card {
+    contain: layout style paint;
+}
+
+.page:not(.active) {
+    visibility: hidden;
+    pointer-events: none;
+}
